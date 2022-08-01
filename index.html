@@ -51,6 +51,7 @@
 							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
 								<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
 							</div>
+							<div>Click On Bar to Dive Deep</div><br><br>
 							<div id="annotation1" style="height: 60px;"></div>
 						</td>
 						<td>
@@ -78,13 +79,22 @@
 					specific models that sell the most, as well as other measures such as the <br>
 					car's title statuses, frequent color choices, ...
 				</h3>
-				<table>
+
+				<h3 id="whichBrand" style="text-align: center;"></h3>
+
+				<h2 style='color: red' id="brandNoData">No Data For This Year</h2>
+				<table id="brandTable">
+					<tr>
+						<th>Average Model Prices Across the Country</th>
+						<th>States With Most Sales</th>
+					</tr>
 					<tr>
 						<td>
 							<svg width="1000" height="500" id="third_svg"></svg>
 							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
 								<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
 							</div>
+							<div>Click On Bar to Dive Deep</div><br><br>
 							<div id="annotation3" style="height: 60px;"></div>
 						</td>
 						<td>
@@ -100,10 +110,23 @@
 		</body>
 	<body>
 		<div id="modelPage">
-			<h1>Title</h1>
-			<p>Some sample text</p>
+			<span onclick="backToBrand()" style="cursor: pointer; color: aqua; text-decoration: underline;">Return To Brand Page</span>
+			<h1>Model-Specific Details</h1>
+			<h3 style="text-align: center;">
+				Here we dive into some of the model-specific details; notably, <br>
+				the change in price of the model over the years, and what the <br>
+				distribution of color choice preferences has been among users.
+			</h3>
 
-			<table>
+			<h3 id="whichModelBrand" style="text-align: center;"></h3>
+			<h3 id="whichModel" style="text-align: center;"></h3>
+
+			<h2 style='color: red' id="modelNoData">No Data For This Year</h2>
+			<table id="modelTable">
+				<tr>
+					<th>Model Price Over the Years</th>
+					<th>Color Preferences of Model</th>
+				</tr>
 				<tr>
 					<td>
 						<svg width="1000" height="500" id="fifth_svg"></svg>

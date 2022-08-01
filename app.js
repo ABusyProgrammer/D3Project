@@ -31,6 +31,11 @@ function backToMain() {
 }
 
 
+function backToBrand() {
+	renderBrandPage(globalBrand);
+}
+
+
 async function updateYear(increment) {
 	const newYearVal = parseInt(document.getElementById("setYear").innerHTML) + increment;
 
@@ -199,6 +204,16 @@ async function showTitleStatusDistributionByYear(year) {
 		return row["year"] == year;
 	});
 
+	if (data.length < 1) {
+		document.getElementById("mainNoData").style.visibility = "visible";
+		document.getElementById("mainTable").style.visibility = "hidden";
+		return;
+	}
+	else {
+		document.getElementById("mainNoData").style.visibility = "hidden";
+		document.getElementById("mainTable").style.visibility = "visible";
+	}
+
 	let tempData = {};
 	for (let i = 0; i < data.length; i++) {
 		if (data[i]["status"] in tempData) {
@@ -266,6 +281,10 @@ async function renderBrandPage(brand) {
 
 	document.getElementById("setYear").style.display = "none";
 
+	globalBrand = brand;
+
+	document.getElementById("whichBrand").innerText = "Brand: " + globalBrand;
+
 	await showTopSellingModelsForBrand(brand);
 	await showMostPopularStatesForBrand(brand);
 }
@@ -325,6 +344,16 @@ async function showTopSellingModelsForBrand(brand) {
 		return row["brand"] == brand && parseFloat(row["price"]) > 500; // filter out undesireble values
 	});
 
+	if (data.length < 1) {
+		document.getElementById("brandNoData").style.visibility = "visible";
+		document.getElementById("brandTable").style.visibility = "hidden";
+		return;
+	}
+	else {
+		document.getElementById("brandNoData").style.visibility = "hidden";
+		document.getElementById("brandTable").style.visibility = "visible";
+	}
+
 	xScale.domain(data.map(function (d) { return d.model; }));
 	yScale.domain([0, d3.max(data, function (d) { return parseInt(d.price); })]);
 
@@ -362,13 +391,13 @@ async function showTopSellingModelsForBrand(brand) {
 		.attr("width", xScale.bandwidth())
 		.attr("height", function (d) { return height - yScale(parseInt(d.price)); })
 		.on("mouseover", function(displayElement, data) { 
-			document.getElementById("annotation3").innerHTML = "Brand Name: " + data.model + "<br># Units: " + data.price;
+			document.getElementById("annotation3").innerHTML = "Model Name: " + data.model + "<br>Avg Sale Price: $" + data.price;
 		})
 		.on("mouseout", function(displayElement, data) { 
 			document.getElementById("annotation3").innerHTML = "";
 		})
 		.on("click", function(displayElement, data) { 
-			console.log("Got you asshole");
+			renderModelPage(data.brand, data.model);
 		});
 }
 
@@ -410,8 +439,13 @@ async function showMostPopularStatesForBrand(brand) {
 	});
 
 	if (data.length < 1) {
-		document.getElementById("fourth_svg").parentElement.innerHTML = "<h2>NO DATA FOUND FOR THIS</h2>";
+		document.getElementById("brandNoData").style.visibility = "visible";
+		document.getElementById("brandTable").style.visibility = "hidden";
 		return;
+	}
+	else {
+		document.getElementById("brandNoData").style.visibility = "hidden";
+		document.getElementById("brandTable").style.visibility = "visible";
 	}
 
 	let svg = d3.select("#fourth_svg"),
@@ -461,7 +495,7 @@ async function showMostPopularStatesForBrand(brand) {
 		.attr("width", xScale.bandwidth())
 		.attr("height", function (d) { return height - yScale(parseInt(d.count)); })
 		.on("mouseover", function(displayElement, data) { 
-			document.getElementById("annotation4").innerHTML = "Brand Name: " + data.state + "<br># Units: " + data.count;
+			document.getElementById("annotation4").innerHTML = "Model Name: " + data.state + "<br># Units: " + data.count;
 		})
 		.on("mouseout", function(displayElement, data) { 
 			document.getElementById("annotation4").innerHTML = "";
@@ -473,17 +507,22 @@ async function showMostPopularStatesForBrand(brand) {
 
 
 async function renderModelPage(brand, model) {
-	document.getElementById("first_svg").innerHTML = "";
-	document.getElementById("second_svg").innerHTML = "";
-	document.getElementById("annotation1").innerHTML = "";
-	document.getElementById("annotation2").innerHTML = "";
+	document.getElementById("fifth_svg").innerHTML = "";
+	document.getElementById("sixth_svg").innerHTML = "";
+	document.getElementById("annotation5").innerHTML = "";
+	document.getElementById("annotation6").innerHTML = "";
 
 	document.getElementById("setYear").style = "display:none";
-
 
 	document.getElementById("modelPage").style = "display:visible";
 	document.getElementById("brandPage").style.display = "none";
 	document.getElementById("mainPage").style.display = "none";
+
+	globalModel = model;
+	globalBrand = brand;
+
+	document.getElementById("whichModelBrand").innerText = "Brand: " + globalBrand;
+	document.getElementById("whichModel").innerText = "Model: " + globalModel;
 
 	await showSalePriceOverTimeForAllModels(brand, model);
 	await showColorsOfCarModel(brand, model);
@@ -521,10 +560,14 @@ async function getSalePriceOverTimeForAllModels(brand, model) {
 
 async function showSalePriceOverTimeForAllModels(brand, model) {
 	let data = await getSalePriceOverTimeForAllModels(brand, model);
-
 	if (data.length < 1) {
-		document.getElementById("fourth_svg").parentElement.innerHTML = "<h1>NO DATA FOUND FOR THIS</h1>";
+		document.getElementById("modelNoData").style.visibility = "visible";
+		document.getElementById("modelTable").style.visibility = "hidden";
 		return;
+	}
+	else {
+		document.getElementById("modelNoData").style.visibility = "hidden";
+		document.getElementById("modelTable").style.visibility = "visible";
 	}
 
 	let svg = d3.select("#fifth_svg"),
@@ -574,7 +617,7 @@ async function showSalePriceOverTimeForAllModels(brand, model) {
 		.attr("width", xScale.bandwidth())
 		.attr("height", function (d) { return height - yScale(parseInt(d.price)); })
 		.on("mouseover", function(displayElement, data) { 
-			document.getElementById("annotation5").innerHTML = "Brand Name: " + data.state + "<br># Units: " + data.count;
+			document.getElementById("annotation5").innerHTML = "Year: " + data.year + "<br>Avg. price: $" + data.price;
 		})
 		.on("mouseout", function(displayElement, data) { 
 			document.getElementById("annotation5").innerHTML = "";
@@ -621,6 +664,15 @@ async function showColorsOfCarModel(brand, model) {
 		.attr("transform", `translate(${width/2}, ${height/2})`);
 
 	let data = await getColorsOfCarModel(brand, model);
+	if (data.length < 1) {
+		document.getElementById("modelNoData").style.visibility = "visible";
+		document.getElementById("modelTable").style.visibility = "hidden";
+		return;
+	}
+	else {
+		document.getElementById("modelNoData").style.visibility = "hidden";
+		document.getElementById("modelTable").style.visibility = "visible";
+	}
 	colors = Object.keys(data);
 	const noColorIndex = colors.indexOf('no_color');
 	if (noColorIndex != -1) {
