@@ -3,7 +3,6 @@ let globalBrand = "ford"
 let globalModel = "focus"
 
 async function renderMainPage(year) {
-	console.log("in main");
 	document.getElementById("first_svg").innerHTML = "";
 	document.getElementById("second_svg").innerHTML = "";
 	document.getElementById("annotation1").innerHTML = "";
@@ -78,7 +77,6 @@ async function showNationWideBrandRankingByYear(year) {
 	data = data.filter(function (row) {
 		return row["year"] == year;
 	});
-	console.log(data);
 
 	if (data.length < 1) {
 		document.getElementById("mainNoData").style.visibility = "visible";
@@ -221,7 +219,6 @@ async function showTitleStatusDistributionByYear(year) {
 		}
 	}
 	data = tempData;
-	console.log(data);
 
 	const color = d3.scaleOrdinal()
 	.range(["#00FFFF", "#00CC66", "#CCCC00"])
@@ -241,8 +238,8 @@ const arcGenerator = d3.arc()
     .attr('d', arcGenerator)
     .attr('fill', function(d){ return(color(d.data[0])) })
     .attr("stroke", "black")
-    .style("stroke-width", "2px")
-    .style("opacity", 0.7)
+    .style("stroke-width", "3px")
+    .style("opacity", 0.8)
 		.on("mouseover", function(displayElement, data) { 
 			document.getElementById("annotation2").innerHTML = "Status: " + data.data[0] + "<br># Instances: " + data.data[1];
 		})
@@ -262,7 +259,6 @@ svg
 
 
 async function renderBrandPage(brand) {
-	console.log("in brand");
 	document.getElementById("third_svg").innerHTML = "";
 	document.getElementById("fourth_svg").innerHTML = "";
 	document.getElementById("annotation3").innerHTML = "";
@@ -320,7 +316,6 @@ async function getTopSellingModelsForAllBrands() {
 
 
 async function showTopSellingModelsForBrand(brand) {
-	console.log("In here too")
 	let svg = d3.select("#third_svg"),
 	margin = 200,
 	width = svg.attr("width") - margin,
@@ -424,7 +419,6 @@ async function getMostPopularStatesForAllBrands() {
 
 
 async function showMostPopularStatesForBrand(brand) {
-	console.log("In here toooo")
 	let data = await d3.csv("./data/showMostPopularStatesForAllBrands.csv");
 	data = data.filter(function (row) {
 		return row["brand"] == brand && parseInt(row["count"]) > 10; // filter out one-off values
