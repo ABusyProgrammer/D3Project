@@ -1,0 +1,62 @@
+async function showMostPopularStatesForBrand(brand) {
+	let svg = d3.select("#fourth_svg"),
+	margin = 200,
+	width = svg.attr("width") - margin,
+	height = svg.attr("height") - margin
+
+	let xScale = d3.scaleBand().range([0, width]).padding(0.1),
+		yScale = d3.scaleLinear().range([height, 0]);
+
+	let g = svg.append("g").attr("transform", "translate(" + 100 + "," + 100 + ")");
+
+	let data = await d3.csv("./data/showMostPopularStatesForAllBrands.csv");
+	data = data.filter(function (row) {
+		return row["brand"] == brand && parseInt(row["count"]) > 50; // filter out one-off values
+	});
+
+	xScale.domain(data.map(function (d) { console.log(d.brand); return d.brand; }));
+	yScale.domain([0, d3.max(data, function (d) { console.log(d.count); return parseInt(d.count); })]);
+
+	g.append("g")
+		.style("font", "14px times")
+		.attr("transform", "translate(0," + height + ")")
+		.call(d3.axisBottom(xScale))
+		.selectAll("text")
+		.attr("x", "45")
+		.attr("y", "-8")
+		.attr("transform", "rotate(90)")
+
+	g.append("g")
+		.style("font", "16px times")
+		.call(d3.axisLeft(yScale).tickFormat(function (d) {
+			return d;
+		})
+			.ticks(10))
+		.append("text")
+		.attr("transform", "rotate(-90)")
+		.attr("y", 6)
+		.attr("dy", "-70px")
+		.attr("dx", "-80px")
+		.attr("text-anchor", "end")
+		.attr("stroke", "black")
+		.attr("font-size", "20px")
+		.text("Number of Sold Units");
+
+	g.selectAll(".bar")
+		.data(data)
+		.enter().append("rect")
+		.attr("class", "bar")
+		.attr("x", function (d) { return xScale(d.brand); })
+		.attr("y", function (d) { return yScale(parseInt(d.count)); })
+		.attr("width", xScale.bandwidth())
+		.attr("height", function (d) { return height - yScale(parseInt(d.count)); })
+		.on("mouseover", function(displayElement, data) { 
+			document.getElementById("annotation4").innerHTML = "Brand Name: " + data.brand + "<br># Units: " + data.count;
+		})
+		.on("mouseout", function(displayElement, data) { 
+			document.getElementById("annotation4").innerHTML = "";
+		})
+		.on("click", function(displayElement, data) { 
+			console.log("Got you asshole");
+		});
+}

@@ -1,3 +1,76 @@
+body {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+	background-color: bisque;
+}
+
+table {
+	width: 100%;
+	text-align:center; 
+	vertical-align:middle
+}
+
 h1 {
-	color: red;
+	font-size: 64px;
+	text-align: center;
+	padding: 0;
+	margin: 0;
+}
+
+h3 {
+	font-weight: normal;
+}
+
+.bar {
+		fill: purple;
+}
+
+.greenBar {
+		fill: lightgreen;
+}
+
+.blueBar {
+		fill: lightblue;
+}
+
+#dateSpinner {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.tip {
+  position: relative;
+  display: inline-block;
+	width: 50%
+}
+
+.tip .tiptext {
+  visibility: hidden;
+  width: 240px;
+  background-color: rgb(43, 42, 42);
+  color: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 15px 0;
+  
+  position: absolute;
+  z-index: 1;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tip:hover .tiptext {
+  visibility: visible;
 }

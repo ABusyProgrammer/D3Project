@@ -4,15 +4,126 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>Sample Page</title>
+		<title>D3 Project</title>
 		<script src="app.js"></script>
+		<script src="https://d3js.org/d3.v6.min.js"></script>
 		<link rel="stylesheet" href="style.css">
 	</head>
 
 	<body>
-		<h1>Title</h1>
-		<p>Some sample text</p>
-		<button onclick="doAnAlert()">Click Me 😎</button>
+		<body onload="renderMainPage(2013)">
+			<div id="mainPage">
+				<img src="https://www.countryflagicons.com/FLAT/64/US.png" alt="United States of America">
+				<h1>Car Sales Across The Country</h1>
+				<h3 style="text-align: center;">
+					Automobiles are the most popular means of commuting <br> 
+					in the United States, with ~76% of Americans relying on their cars <br> 
+					to go about their daily business [<a href="https://www.weforum.org/agenda/2022/05/commute-america-sustainability-cars/" style="text-decoration: none">1</a>]. With this in mind, <br>
+					we explore the different automobile options available in the market in terms of <br>
+					consumer popularity.
+					<br><br>
+					We will cover the most popular brands across the country, the <br>
+					specific models that sell the most, as well as other measures such as the <br>
+					car's title statuses, frequent color choices, ...
+				</h3>
+		
+				<br>
+				<div id="dateSpinner">
+					<table style="width: 10%">
+						<tr>
+							<td><button onclick="updateYear(-1)">◀️</button></td>
+							<td style="width: 80%;"><span id="setYear"></span></td>
+							<td><button onclick="updateYear(1)">▶️</button></td>
+						</tr>
+					</table>
+				</div>
+				<br>
+
+				<h2 style='color: red' id="mainNoData">No Data For This Year</h2>
+				<table id="mainTable">
+					<tr>
+						<th>Most Popular Brands in USA</th>
+						<th>Average Car Title Statuses Across The Country</th>
+					</tr>
+					<tr>
+						<td>
+							<svg width="1000" height="500" id="first_svg"></svg>
+							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+								<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
+							</div>
+							<div id="annotation1" style="height: 60px;"></div>
+						</td>
+						<td>
+							<svg width="500" height="500" id="second_svg"></svg>
+							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+								<span class="tiptext">Tip: Hover over the Pie-Chart To See More Details 😃</span>
+							</div>
+							<div id="annotation2" style="height: 60px;"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</body>
+
+		<body>
+			<div id="brandPage">
+				<span onclick="backToMain()" style="cursor: pointer; color: aqua; text-decoration: underline;">Return To Main Page</span>
+				<h1>Brand-Specific Details</h1>
+				<h3 style="text-align: center;">
+					Here we dive into some of the brand-specific details; notably, <br>
+					which models of the selected brand is the most popular, and what the <br>
+					average price of every model has been.
+					<br><br>
+					We will cover the most popular brands across the country, the <br>
+					specific models that sell the most, as well as other measures such as the <br>
+					car's title statuses, frequent color choices, ...
+				</h3>
+				<table>
+					<tr>
+						<td>
+							<svg width="1000" height="500" id="third_svg"></svg>
+							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+								<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
+							</div>
+							<div id="annotation3" style="height: 60px;"></div>
+						</td>
+						<td>
+							<svg width="700" height="500" id="fourth_svg"></svg>
+							<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+								<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
+							</div>
+							<div id="annotation4" style="height: 60px;"></div>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</body>
+	<body>
+		<div id="modelPage">
+			<h1>Title</h1>
+			<p>Some sample text</p>
+
+			<table>
+				<tr>
+					<td>
+						<svg width="1000" height="500" id="fifth_svg"></svg>
+						<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+							<span class="tiptext">Tip: Hover over the Bar-Chart To See More Details 😃</span>
+						</div>
+						<div id="annotation5" style="height: 60px;"></div>
+					</td>
+					<td>
+						<svg width="700" height="500" id="sixth_svg"></svg>
+						<div class="tip"><strong style="text-decoration: dotted underline">Details</strong>
+							<span class="tiptext">Tip: Hover over the Pie-Chart To See More Details 😃</span>
+						</div>
+						<div id="annotation6" style="height: 60px;"></div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+	<!-- <a href="https://clearbit.com">Logos provided by Clearbit</a> -->
 	</body>
 
 </html>

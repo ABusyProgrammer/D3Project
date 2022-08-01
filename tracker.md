@@ -1,0 +1,12 @@
+Main page:
+- USA-level car sales
+	- [x] Brand selling ranking (bar chart) - getNationWideBrandRanking
+	- [x] title status (pie chart)
+	- [ ] average mileage (lets see)
+- Brand-level
+	- [x] Top-selling models
+	- [x] Top 5 States with most sold units of this brand
+- Model-level
+	- [x] Average sale price over time (line chart) with mileage
+	- [x] Car color pie chart
+	- [] Top-selling cities

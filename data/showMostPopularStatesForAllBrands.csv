@@ -1,0 +1,150 @@
+brand,state,count
+ford,tennessee,9
+ford,virginia,52
+ford,texas,135
+ford,pennsylvania,191
+ford,south carolina,40
+ford,new york,40
+ford,georgia,17
+ford,arizona,5
+ford,florida,83
+ford,missouri,23
+ford,oklahoma,44
+ford,michigan,97
+ford,california,72
+ford,kansas,1
+ford,minnesota,34
+ford,illinois,68
+ford,wisconsin,43
+ford,mississippi,21
+ford,arkansas,7
+ford,washington,1
+ford,maryland,1
+ford,connecticut,11
+ford,massachusetts,20
+ford,new jersey,49
+ford,indiana,4
+ford,nevada,42
+ford,kentucky,8
+ford,alabama,11
+ford,north carolina,49
+ford,ohio,4
+ford,louisiana,8
+ford,oregon,21
+ford,colorado,10
+ford,west virginia,7
+ford,new mexico,1
+ford,idaho,2
+ford,new hampshire,2
+ford,montana,1
+ford,utah,1
+chevrolet,florida,21
+chevrolet,georgia,14
+chevrolet,tennessee,4
+chevrolet,ohio,1
+chevrolet,pennsylvania,21
+chevrolet,michigan,22
+chevrolet,washington,8
+chevrolet,texas,29
+chevrolet,kentucky,1
+chevrolet,nebraska,2
+chevrolet,ontario,1
+chevrolet,arkansas,3
+chevrolet,wyoming,1
+chevrolet,colorado,6
+chevrolet,missouri,10
+chevrolet,california,14
+chevrolet,south carolina,1
+chevrolet,virginia,1
+chevrolet,arizona,1
+chevrolet,minnesota,1
+chevrolet,illinois,8
+chevrolet,wisconsin,25
+chevrolet,oklahoma,23
+chevrolet,new jersey,11
+chevrolet,oregon,6
+chevrolet,new york,4
+chevrolet,indiana,5
+chevrolet,west virginia,11
+chevrolet,nevada,24
+chevrolet,kansas,2
+chevrolet,north carolina,16
+kia,north carolina,4
+kia,missouri,1
+kia,california,2
+kia,new jersey,1
+kia,connecticut,4
+bmw,tennessee,1
+bmw,michigan,5
+bmw,texas,2
+bmw,florida,1
+bmw,california,2
+bmw,new jersey,1
+bmw,georgia,1
+bmw,utah,1
+bmw,illinois,1
+bmw,wisconsin,2
+dodge,georgia,13
+dodge,texas,29
+dodge,pennsylvania,62
+dodge,south carolina,8
+dodge,michigan,24
+dodge,florida,36
+dodge,utah,2
+dodge,arizona,10
+dodge,ohio,3
+dodge,minnesota,23
+dodge,wisconsin,13
+dodge,nebraska,2
+dodge,ontario,6
+dodge,washington,4
+dodge,north carolina,60
+dodge,colorado,4
+dodge,california,32
+dodge,new jersey,9
+dodge,illinois,27
+dodge,massachusetts,4
+dodge,connecticut,2
+dodge,new york,6
+dodge,rhode island,1
+dodge,missouri,6
+dodge,nevada,19
+dodge,tennessee,2
+dodge,louisiana,1
+dodge,oklahoma,3
+dodge,virginia,9
+dodge,west virginia,3
+dodge,alabama,2
+dodge,mississippi,2
+dodge,maryland,1
+dodge,indiana,2
+dodge,new mexico,2
+nissan,california,40
+nissan,new jersey,12
+nissan,north carolina,7
+nissan,arizona,16
+nissan,florida,74
+nissan,texas,9
+nissan,wisconsin,5
+nissan,illinois,8
+nissan,missouri,6
+nissan,alabama,4
+nissan,connecticut,6
+nissan,ohio,11
+nissan,louisiana,2
+nissan,indiana,1
+nissan,kansas,1
+nissan,oklahoma,1
+nissan,south carolina,7
+nissan,vermont,2
+nissan,pennsylvania,14
+nissan,massachusetts,2
+nissan,new hampshire,2
+nissan,rhode island,1
+nissan,new york,1
+nissan,tennessee,8
+nissan,georgia,3
+nissan,new mexico,1
+nissan,virginia,8
+nissan,minnesota,59
+nissan,maryland,1
