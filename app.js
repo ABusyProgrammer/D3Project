@@ -20,9 +20,6 @@ async function renderMainPage(year) {
 
 	await showNationWideBrandRankingByYear(year);
 	await showTitleStatusDistributionByYear(year);
-
-	// await showSalePriceOverTimeForAllModels('ford', 'wagon');
-	// await showColorsOfCarModel('ford', 'wagon');
 }
 
 
@@ -229,12 +226,10 @@ async function showTitleStatusDistributionByYear(year) {
 	const color = d3.scaleOrdinal()
 	.range(["#00FFFF", "#00CC66", "#CCCC00"])
 
-// Compute the position of each group on the pie:
 const pie = d3.pie()
   .value(function(d) {return d[1]})
 const pie_positions = pie(Object.entries(data))
 
-// shape helper to build arcs:
 const arcGenerator = d3.arc()
   .innerRadius(0)
   .outerRadius(radius)
@@ -255,7 +250,6 @@ const arcGenerator = d3.arc()
 			document.getElementById("annotation2").innerHTML = "";
 		})
 
-// Now add the annotation. Use the centroid method to get the best coordinates
 svg
   .selectAll('mySlices')
   .data(pie_positions)
@@ -322,8 +316,6 @@ async function getTopSellingModelsForAllBrands() {
 			csvFormat += brand  + "," + model + "," + parseInt(finalOutput[model]) + "\n";
 		}
 	})
-
-	// console.log(csvFormat);
 }
 
 
@@ -500,9 +492,6 @@ async function showMostPopularStatesForBrand(brand) {
 		.on("mouseout", function(displayElement, data) { 
 			document.getElementById("annotation4").innerHTML = "";
 		})
-		.on("click", function(displayElement, data) { 
-			console.log("Got you asshole");
-		});
 }
 
 
@@ -622,9 +611,6 @@ async function showSalePriceOverTimeForAllModels(brand, model) {
 		.on("mouseout", function(displayElement, data) { 
 			document.getElementById("annotation5").innerHTML = "";
 		})
-		.on("click", function(displayElement, data) { 
-			console.log("Got you asshole");
-		});
 }
 
 
@@ -686,7 +672,6 @@ const pie = d3.pie()
   .value(function(d) {return d[1]})
 const pie_positions = pie(Object.entries(data))
 
-// shape helper to build arcs:
 const arcGenerator = d3.arc()
   .innerRadius(0)
   .outerRadius(radius)
